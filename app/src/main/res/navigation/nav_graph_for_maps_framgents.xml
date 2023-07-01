@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_for_maps_framgents"
+    app:startDestination="@id/mapsStartingFragment">
+
+    <fragment
+        android:id="@+id/mapsStartingFragment"
+        android:name="com.example.task2.javafolder.viewviewmodel.fragments.startingfragments.mapsstarting.MapsStartingFragment"
+        android:label="fragment_maps_starting"
+        tools:layout="@layout/fragment_starting" >
+        <action
+            android:id="@+id/action_mapsStartingFragment_to_fragmentWithMapsBenchmarks"
+            app:destination="@id/fragmentWithMapsBenchmarks" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentWithMapsBenchmarks"
+        android:name="com.example.task2.javafolder.viewviewmodel.fragments.parentfragment.maps.MapsFragment"
+        android:label="fragment_with_benchmarks"
+        tools:layout="@layout/fragment_with_benchmarks" />
+</navigation>

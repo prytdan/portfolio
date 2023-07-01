@@ -1,0 +1,71 @@
+<resources>
+    <!-- string resources for xml files -->
+    <string name="app_name">Benchmark</string>
+    <string name="toolbar_name">Collections &amp; Maps</string>
+    <string name="collections">Collections</string>
+    <string name="maps">Maps</string>
+    <string name="edit_text_hint_enter_amount">Elements amount:</string>
+    <string name="button_text_start">start</string>
+    <string name="button_text_stop">stop</string>
+    <string name="enter_collection_size">Please enter collection size and number of elements to compare</string>
+    <string name="enter_map_size">Please enter map size and number of elements to compare</string>
+    <string name="edit_text_hint_collection_size">Collection size</string>
+    <string name="edit_text_hint_map_size">Map size</string>
+    <string name="button_text_calculate">Calculate</string>
+    <string name="mock_text">Mock test</string>
+
+    <!-- string resources for users input validation error -->
+    <string name="edit_text_empty_input">Text empty input</string>
+    <string name="edit_text_invalid_input">Invalid input</string>
+    <string name="edit_text_negative_numbers_input">Negative numbers input</string>
+    <string name="error_text_negative_numbers_input">You can\'t enter zero or negative
+        amount of objects
+    </string>
+    <string name="error_text_empty_input">You have to enter number of elements.</string>
+    <string name="error_text_invalid_input">You can\'t enter anything except
+        amount number.</string>
+
+    <!-- string resources for collection benchmarks -->
+    <string name="add_begin_arraylist">Adding in the beginning ArrayList</string>
+    <string name="add_begin_linkedlist">Adding in the beginning LinkedList</string>
+    <string name="add_begin_copyonwritearraylist">Adding in the beginning CopyOnWriteArrayList</string>
+    <string name="add_middle_arraylist">Adding in the middle ArrayList</string>
+    <string name="add_middle_linkedlist">Adding in the middle LinkedList</string>
+    <string name="add_middle_copyonwritearraylist">Adding in the middle CopyOnWriteArrayList</string>
+    <string name="add_end_arraylist">Adding in the end ArrayList</string>
+    <string name="add_end_linkedlist">Adding in the end LinkedList</string>
+    <string name="add_end_copyonwritearraylist">Adding in the end CopyOnWriteArrayList</string>
+    <string name="search_value_arraylist">Search by value ArrayList</string>
+    <string name="search_value_linkedlist">Search by value LinkedList</string>
+    <string name="search_value_copyonwritearraylist">Search by value CopyOnWriteArrayList</string>
+    <string name="remove_begin_arraylist">Removing in the beginning ArrayList</string>
+    <string name="remove_begin_linkedlist">Removing in the beginning LinkedList</string>
+    <string name="remove_begin_copyonwritearraylist">Removing in the beginning CopyOnWriteArrayList</string>
+    <string name="remove_middle_arraylist">Removing in the middle ArrayList</string>
+    <string name="remove_middle_linkedlist">Removing in the middle LinkedList</string>
+    <string name="remove_middle_copyonwritearraylist">Removing in the middle CopyOnWriteArrayList</string>
+    <string name="remove_end_arraylist">Removing in the end ArrayList</string>
+    <string name="remove_end_linkedlist">Removing in the end LinkedList</string>
+    <string name="remove_end_copyonwritearraylist">Removing in the end CopyOnWriteArrayList</string>
+
+    <!-- string resources for map benchmarks -->
+    <string name="add_new_treemap">Adding new TreeMap</string>
+    <string name="add_new_hashmap">Adding new HashMap</string>
+    <string name="search_key_treemap">Search by key TreeMap</string>
+    <string name="search_key_hashmap">Search by key HashMap</string>
+    <string name="remove_treemap">Removing TreeMap</string>
+    <string name="remove_hashmap">Removing HashMap</string>
+
+    <!-- string resources for benchmarks text representation -->
+    <string name="benchmarks_text_representation">%1$s \n %2$s  ms</string>
+
+    <!-- string resources for sample text -->
+    <string name="lorem_ipsum_size_1">Lorem ipsum</string>
+    <string name="lorem_ipsum_size_2">Lorem ipsum dolor</string>
+    <string name="lorem_ipsum_size_3">Lorem ipsum dolor sit amet</string>
+    <string name="lorem_ipsum_size_4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</string>
+    <string name="lorem_ipsum_size_5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</string>
+    <string name="lorem_ipsum_size_6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="lorem_ipsum_size_7">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+
+</resources>
