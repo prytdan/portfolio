@@ -1,1 +1,1 @@
-This project is written in Java and represents an Android application that allows users to create a bunch of benchmarks. These benchmarks will perform various operations with lists/maps and display the efficiency of each benchmark.
+This project is written in Java and represents an Android application that allows users to create a bunch of benchmarks. These benchmarks will perform various operations with lists/maps and display the efficiency of each benchmark. During the creation of this app, libraries such as RxJava and Dagger Hilt were used.
