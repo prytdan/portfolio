@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/collectionsStartingFragment">
+    <fragment
+        android:id="@+id/collectionsStartingFragment"
+        android:name="com.example.task2.kotlinfolder.viewviewmodel.fragments.startingfragments.collectionsstarting.CollectionsStartingFragment"
+        android:label="fragment_collections_starting"
+        tools:layout="@layout/fragment_starting" >
+        <action
+            android:id="@+id/action_collectionsStartingFragment_to_fragmentWithCollectionsBenchmarks"
+            app:destination="@id/fragmentWithCollectionsBenchmarks" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentWithCollectionsBenchmarks"
+        android:name="com.example.task2.kotlinfolder.viewviewmodel.fragments.parentfragment.collections.CollectionsFragment"
+        android:label="fragment_with_benchmarks"
+        tools:layout="@layout/fragment_with_benchmarks" />
+</navigation>
