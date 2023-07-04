@@ -19,6 +19,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -33,8 +34,6 @@ abstract class ParentViewModel(repository: Repository) : BaseViewModel(repositor
     val liveDataForStateOfCalculation = mutableLiveDataForStateOfCalculation.readOnly()
 
     private var calculationJob: Job? = null
-
-    private lateinit var listOfFlows: List<Flow<Benchmark>>
 
     protected var listOfBenchmarks: MutableList<Benchmark> = mutableListOf()
 
@@ -61,7 +60,6 @@ abstract class ParentViewModel(repository: Repository) : BaseViewModel(repositor
 
     fun startCalculations() {
         mutableLiveDataForStateOfCalculation.value = StateOfCalculation.CALCULATING
-        listOfFlows = createListOfFlows()
         launchCoroutinesFromFlows()
     }
 
@@ -69,21 +67,6 @@ abstract class ParentViewModel(repository: Repository) : BaseViewModel(repositor
         mutableLiveDataForStateOfCalculation.value = StateOfCalculation.TERMINATED
         calculationJob?.cancelChildren()
         stopAnimationOfProgressBars()
-    }
-
-    private fun createListOfFlows(): List<Flow<Benchmark>> {
-        val listOfFlows = ArrayList<Flow<Benchmark>>()
-        for (benchmarksId in 0 until listOfBenchmarks.size) {
-            listOfFlows.add(
-                flow {
-                    val benchmarkBeforeCalculation = createBenchmarkBeforeCalculation(benchmarksId)
-                    emit(benchmarkBeforeCalculation)
-                    val benchmarkAfterCalculation = createBenchmarkAfterCalculation(benchmarksId)
-                    emit(benchmarkAfterCalculation)
-                }
-            )
-        }
-        return listOfFlows
     }
 
 
@@ -109,28 +92,25 @@ abstract class ParentViewModel(repository: Repository) : BaseViewModel(repositor
 
 
     private fun launchCoroutinesFromFlows() {
-        val benchmarkFlow = MutableSharedFlow<Benchmark>()
-        calculationJob = viewModelScope.launch(dispatcherIO) {
-            val deferredList = listOfFlows.map { flow ->
-                async {
-                    flow.collect { benchmark ->
-                        withContext(dispatcherMain) {
-                            listOfBenchmarks[benchmark.name.benchmarksId] = benchmark
-                            mutableLiveDataForListOfBenchmarks.value = listOfBenchmarks
-                        }
-                        benchmarkFlow.emit(benchmark)
+        val jobs = mutableListOf<Job>()
+        viewModelScope.launch(dispatcherIO) {
+            for (i in 0 until listOfBenchmarks.size) {
+                val job = launch {
+                    listOfBenchmarks[i] = createBenchmarkBeforeCalculation(i)
+                    withContext(dispatcherMain) {
+                        mutableLiveDataForListOfBenchmarks.value = listOfBenchmarks
+                    }
+                    listOfBenchmarks[i] = createBenchmarkAfterCalculation(i)
+                    withContext(dispatcherMain) {
+                        mutableLiveDataForListOfBenchmarks.value = listOfBenchmarks
                     }
                 }
+                jobs.add(job)
             }
-            deferredList.awaitAll()
+            jobs.joinAll()
+
             withContext(dispatcherMain) {
                 mutableLiveDataForStateOfCalculation.value = StateOfCalculation.TERMINATED
-            }
-        }
-        viewModelScope.launch(dispatcherMain) {
-            benchmarkFlow.collect { benchmark ->
-                listOfBenchmarks[benchmark.name.benchmarksId] = benchmark
-                mutableLiveDataForListOfBenchmarks.value = listOfBenchmarks
             }
         }
     }
